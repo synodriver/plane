@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 @export_color_no_alpha var color = Color.WHITE
-@export var duration = 1.0
+@export var duration: float = 2.0
 
 @onready var color_rect = $ColorRect
 
