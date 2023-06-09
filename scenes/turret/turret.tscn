@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhmpevqrappsl"]
+
+[ext_resource type="Texture2D" uid="uid://buhwenvyi4ayk" path="res://icon.svg" id="1_lrvj1"]
+[ext_resource type="Script" path="res://scenes/turret/turret.gd" id="1_vwfni"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2io5v"]
+radius = 52.0
+
+[node name="Turret" type="Area2D"]
+position = Vector2(387, 222)
+rotation = -1.77675
+script = ExtResource("1_vwfni")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_2io5v")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.400391, 0.410156)
+texture = ExtResource("1_lrvj1")
