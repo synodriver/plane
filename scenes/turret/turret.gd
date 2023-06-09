@@ -1,8 +1,9 @@
 extends Area2D
 class_name BaseTurret
 
-var angularspeed:float = 0.5 # 炮塔旋转角速度 rad/s
+@export var angularspeed: float = 0.5 # 炮塔旋转角速度 rad/s
 var target:Vector2
+@export var tolerance: float = 0.001
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -13,7 +14,6 @@ func process_angle(angle: float)->float:
 	if beishu > 0:
 		if angle >0:
 			angle -= beishu*2*PI
-			
 		else:
 			angle += beishu*2*PI
 	#print(angle)	
@@ -21,7 +21,6 @@ func process_angle(angle: float)->float:
 		angle -=2*PI			
 	if angle < -PI:	
 		angle += 2*PI
-	
 	return angle
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -29,7 +28,7 @@ func _process(delta):
 	var should_rotate:float = deltapos.angle() - self.global_rotation  # 因该旋转的弧度
 	should_rotate = self.process_angle(should_rotate)
 	#print("应该旋转", should_rotate)
-	if abs(should_rotate) < 0.001:
+	if abs(should_rotate) < self.tolerance:
 		return
 	if should_rotate >0:
 		self.global_rotation += angularspeed * delta
