@@ -9,6 +9,7 @@ func _ready():
 	timer.timeout.connect(_on_timer_time_out)
 	timer.wait_time = 0.01
 	timer.start()
+	print(0.1+0.2 == 0.3)
 	
 func _on_timer_time_out():
 	var cube: RigidBody2D = res_cube.instantiate()
