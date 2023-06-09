@@ -43,8 +43,11 @@ func _physics_process(delta):
 	for obj in self.tracing_objs:
 		tmpdis = self.global_position.distance_to(obj.global_position)
 		self.ddistance[idx].append(tmpdis)
-		if len(self.ddistance[idx]) >=2 && self.ddistance[idx][-1]>self.ddistance[idx][-2]:
-			self.destroy() # 为了找到一个最短距离
+		if len(self.ddistance[idx]) >=2:
+			if self.ddistance[idx][-1]>self.ddistance[idx][-2]:
+				self.destroy() # 为了找到一个最短距离
+			else:
+				self.ddistance[idx].remove_at(0)
 		idx += 1
 
 

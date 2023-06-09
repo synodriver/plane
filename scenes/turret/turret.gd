@@ -2,7 +2,7 @@ extends Area2D
 class_name BaseTurret
 
 @export var angularspeed: float = 0.5 # 炮塔旋转角速度 rad/s
-var target:Vector2
+var target: Vector2
 @export var tolerance: float = 0.001
 # Called when the node enters the scene tree for the first time.
 func _ready():
