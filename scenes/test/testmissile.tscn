@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8sjjy08vkm8g"]
+
+[ext_resource type="Script" path="res://scenes/test/testmissile.gd" id="1_os1rw"]
+[ext_resource type="PackedScene" uid="uid://bwicxa6ublegu" path="res://scenes/projectiles/missile/missile.tscn" id="2_ngdh1"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_os1rw")
+
+[node name="Missile" parent="." instance=ExtResource("2_ngdh1")]

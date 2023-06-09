@@ -26,12 +26,12 @@ func bodyarea_on_area_entered(area: Area2D):
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	print("位置",self.global_position, "速度", self.speed)
+	# print("位置",self.global_position, "速度", self.speed)
 	self.global_position += self.speed * delta
 	self.look_at(self.global_position + self.speed)  # 指向速度方向
 	var pos:Vector2 = self.global_position.direction_to(self.target)
 
-	self.speed += pos * 50 * delta
+	self.speed += pos * 500 * delta
 	
 	
 func destroy(): # 导弹爆炸
