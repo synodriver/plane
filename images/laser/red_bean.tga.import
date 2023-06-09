@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckmayjfsbl86f"
-path="res://.godot/imported/barrel_reload.png-7a43c1920e70c86e94353ce28a37f35d.ctex"
+uid="uid://c0kw40cqabmn8"
+path="res://.godot/imported/red_bean.tga-e2e97d6580c5c784576753385478690a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/cannon/barrel_reload.png"
-dest_files=["res://.godot/imported/barrel_reload.png-7a43c1920e70c86e94353ce28a37f35d.ctex"]
+source_file="res://images/laser/red_bean.tga"
+dest_files=["res://.godot/imported/red_bean.tga-e2e97d6580c5c784576753385478690a.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4ocr0e1m3con"
-path="res://.godot/imported/beam.png-e2e471f1efe917bd89f1f71f599fe370.ctex"
+uid="uid://cjcw860bvk6iy"
+path="res://.godot/imported/laser_barrel.png-3431128aa237d18cf7c5eeb550f8bb17.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/laser/beam.png"
-dest_files=["res://.godot/imported/beam.png-e2e471f1efe917bd89f1f71f599fe370.ctex"]
+source_file="res://images/laser/laser_barrel.png"
+dest_files=["res://.godot/imported/laser_barrel.png-3431128aa237d18cf7c5eeb550f8bb17.ctex"]
 
 [params]
 

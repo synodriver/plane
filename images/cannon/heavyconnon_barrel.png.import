@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckmayjfsbl86f"
-path="res://.godot/imported/barrel_reload.png-7a43c1920e70c86e94353ce28a37f35d.ctex"
+uid="uid://6obg5gqjqb2s"
+path="res://.godot/imported/heavyconnon_barrel.png-5603bbb1b606e7ffae93a41d4e181a56.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/cannon/barrel_reload.png"
-dest_files=["res://.godot/imported/barrel_reload.png-7a43c1920e70c86e94353ce28a37f35d.ctex"]
+source_file="res://images/cannon/heavyconnon_barrel.png"
+dest_files=["res://.godot/imported/heavyconnon_barrel.png-5603bbb1b606e7ffae93a41d4e181a56.ctex"]
 
 [params]
 
