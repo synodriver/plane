@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0gphtgm72psw"
-path="res://.godot/imported/howitzera.PNG-0776bb20584bc2ce8fcb2fee4414983b.ctex"
+uid="uid://wbm68a0cjh1p"
+path="res://.godot/imported/yellow_bullet.tga-e6a3403ffeec8c308e008f107d06b947.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/howitzer/howitzera.PNG"
-dest_files=["res://.godot/imported/howitzera.PNG-0776bb20584bc2ce8fcb2fee4414983b.ctex"]
+source_file="res://images/bullet/yellow_bullet.tga"
+dest_files=["res://.godot/imported/yellow_bullet.tga-e6a3403ffeec8c308e008f107d06b947.ctex"]
 
 [params]
 
