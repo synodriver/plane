@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://i6yslt7u2aga"]
+
+[ext_resource type="Script" path="res://scenes/toy/bullet.gd" id="1_5o06y"]
+[ext_resource type="Texture2D" uid="uid://cjjuw68u6airb" path="res://images/bullet/blue_bullet.png" id="2_tbxth"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tafth"]
+
+[node name="Bullet" type="RigidBody2D"]
+mass = 2.5
+gravity_scale = 0.0
+script = ExtResource("1_5o06y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.35, 0.15)
+shape = SubResource("CircleShape2D_tafth")
+
+[node name="Body" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_tbxth")
+offset = Vector2(-5, -0.5)
