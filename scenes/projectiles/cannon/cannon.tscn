@@ -1,32 +1,29 @@
-[gd_scene load_steps=7 format=3 uid="uid://nfj44m2qlwy0"]
+[gd_scene load_steps=5 format=3 uid="uid://nfj44m2qlwy0"]
 
 [ext_resource type="Script" path="res://scenes/projectiles/cannon/cannon.gd" id="1_0ge6g"]
 [ext_resource type="Texture2D" uid="uid://dodltvsijyhha" path="res://images/cannon/cannon_shell.tga" id="1_o3rgj"]
-[ext_resource type="Script" path="res://scenes/projectiles/cannon/DetectArea.gd" id="2_5hckj"]
-[ext_resource type="Script" path="res://scenes/projectiles/cannon/BodyArea.gd" id="3_t5q1n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6dnbq"]
 radius = 500.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1qr33"]
-size = Vector2(56, 97)
+size = Vector2(93, 56)
 
 [node name="CannonShell" type="Node2D"]
 script = ExtResource("1_0ge6g")
 
 [node name="DetectArea" type="Area2D" parent="."]
-script = ExtResource("2_5hckj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectArea"]
 shape = SubResource("CircleShape2D_6dnbq")
 
 [node name="BodyArea" type="Area2D" parent="."]
-script = ExtResource("3_t5q1n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BodyArea"]
 shape = SubResource("RectangleShape2D_1qr33")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-2, 0)
+position = Vector2(2, -2)
+rotation = 1.58279
 scale = Vector2(0.519531, 0.488281)
 texture = ExtResource("1_o3rgj")
