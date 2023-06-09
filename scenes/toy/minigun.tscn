@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpd6tf1lqbv2i"]
+
+[ext_resource type="Script" path="res://scenes/toy/minigun.gd" id="1_bsivy"]
+[ext_resource type="Texture2D" uid="uid://dv17p0cm7ysvo" path="res://images/turret/minigun.png" id="2_8ix0c"]
+
+[node name="Minigun" type="Node2D"]
+z_index = 1
+scale = Vector2(2, 2)
+script = ExtResource("1_bsivy")
+
+[node name="Body" type="Sprite2D" parent="."]
+scale = Vector2(0.66, 0.66)
+texture = ExtResource("2_8ix0c")
+
+[node name="FirePoint" type="Node2D" parent="."]
+position = Vector2(10, 0)

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dv17p0cm7ysvo"
-path="res://.godot/imported/turret.png-268d9dab7ce6be52d5103d533d83d0d8.ctex"
+path="res://.godot/imported/minigun.png-5bae04e1ca83884252cd1d91fcc18c4a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/turret/turret.png"
-dest_files=["res://.godot/imported/turret.png-268d9dab7ce6be52d5103d533d83d0d8.ctex"]
+source_file="res://images/turret/minigun.png"
+dest_files=["res://.godot/imported/minigun.png-5bae04e1ca83884252cd1d91fcc18c4a.ctex"]
 
 [params]
 

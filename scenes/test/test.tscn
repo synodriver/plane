@@ -1,11 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://dqxljrixjrjf7"]
+[gd_scene load_steps=4 format=3 uid="uid://dqxljrixjrjf7"]
 
 [ext_resource type="Script" path="res://scenes/test/test.gd" id="1_hwmvh"]
+[ext_resource type="PackedScene" uid="uid://bpd6tf1lqbv2i" path="res://scenes/toy/minigun.tscn" id="2_fibgf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2dwpp"]
 
 [node name="Test" type="Node2D"]
 script = ExtResource("1_hwmvh")
+
+[node name="Minigun" parent="." instance=ExtResource("2_fibgf")]
+position = Vector2(130, 578)
 
 [node name="Ground" type="StaticBody2D" parent="."]
 position = Vector2(640, 720)

@@ -12,7 +12,7 @@ func _ready():
 	
 func _on_timer_time_out():
 	var cube: RigidBody2D = res_cube.instantiate()
-	cube.position = Vector2(screen_size.x / 2 + (randf() - 0.5) * 500, 0)
+	cube.position = Vector2(self.screen_size.x / 2 + (randf() - 0.5) * 500, 0)
 	cube.color = Color(randf(), randf(), randf())
 	cube.duration = 2
 	add_child(cube)
