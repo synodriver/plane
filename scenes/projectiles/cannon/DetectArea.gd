@@ -23,8 +23,9 @@ func _process(delta):
 
 func on_area_entered(area: Area2D):
 	if area.get_parent().is_enemy != self.get_parent().is_enemy:
-		self.tracing_objs.append(area)
-		self.ddistance.append([])
+		if area.get_parent().is_in_group("plane"):
+			self.tracing_objs.append(area)
+			self.ddistance.append([])
 
 func on_area_exited(area: Area2D):
 	var idx = self.tracing_objs.find(area)
