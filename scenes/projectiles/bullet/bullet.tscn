@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://drm16p0moln0l"]
+
+[ext_resource type="Script" path="res://scenes/projectiles/bullet/bullet.gd" id="1_2jjr6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8y4am"]
+
+[node name="Bullet" type="Node2D"]
+script = ExtResource("1_2jjr6")
+
+[node name="BodyArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BodyArea"]
+shape = SubResource("RectangleShape2D_8y4am")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

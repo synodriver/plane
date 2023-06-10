@@ -8,4 +8,4 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	self.get_node("Missile").set_target(get_global_mouse_position())
+	self.get_node("Missile").set_target(self.get_global_mouse_position())
