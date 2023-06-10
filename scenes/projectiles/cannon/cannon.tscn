@@ -1,13 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://nfj44m2qlwy0"]
+[gd_scene load_steps=4 format=3 uid="uid://nfj44m2qlwy0"]
 
 [ext_resource type="Script" path="res://scenes/projectiles/cannon/cannon.gd" id="1_0ge6g"]
 [ext_resource type="Texture2D" uid="uid://dodltvsijyhha" path="res://images/cannon/cannon_shell.tga" id="1_o3rgj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6dnbq"]
 radius = 500.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1qr33"]
-size = Vector2(96, 57)
 
 [node name="CannonShell" type="Node2D"]
 script = ExtResource("1_0ge6g")
@@ -19,12 +16,11 @@ shape = SubResource("CircleShape2D_6dnbq")
 
 [node name="BodyArea" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BodyArea"]
-position = Vector2(0, 0.5)
-shape = SubResource("RectangleShape2D_1qr33")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BodyArea"]
+polygon = PackedVector2Array(-48, -22, -34, -26, 11, -26, 22, -24, 33, -19, 39, -14, 43, -10, 46, -5, 47, -2, 47, 0, 47, 2, 46, 6, 43, 11, 39, 15, 32, 20, 23, 24, 11, 27, -34, 27, -48, 23)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(2, -2)
-rotation = 1.58279
-scale = Vector2(0.533, 0.5)
+rotation = 1.5708
+scale = Vector2(0.5, 0.502)
 texture = ExtResource("1_o3rgj")

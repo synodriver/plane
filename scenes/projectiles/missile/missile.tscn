@@ -1,10 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bwicxa6ublegu"]
+[gd_scene load_steps=3 format=3 uid="uid://bwicxa6ublegu"]
 
 [ext_resource type="Script" path="res://scenes/projectiles/missile/missile.gd" id="1_ni4uw"]
 [ext_resource type="Texture2D" uid="uid://dk0v40y25f0kc" path="res://images/missile/missile.tga" id="2_cx810"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_x317u"]
-size = Vector2(297, 61)
 
 [node name="Missile" type="Node2D"]
 script = ExtResource("1_ni4uw")
@@ -13,9 +10,8 @@ is_enemy = true
 [node name="BodyArea" type="Area2D" parent="."]
 position = Vector2(-112, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BodyArea"]
-position = Vector2(103.5, 0)
-shape = SubResource("RectangleShape2D_x317u")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BodyArea"]
+polygon = PackedVector2Array(-45, 31, -45, -30, 170, -30, 238, -13, 244, -11, 249, -6, 251, 0, 249, 5, 244, 10, 237, 12, 170, 31)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-112, 0)

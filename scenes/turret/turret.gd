@@ -3,7 +3,7 @@ class_name BaseTurret
 
 @export var angularspeed: float = 0.5 # 炮塔旋转角速度 rad/s
 var target: Vector2
-@export var tolerance: float = 0.001
+@export var tolerance: float = 0.01
 var aimed: bool # 是否已经瞄准
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -24,14 +24,17 @@ func process_angle(angle: float)->float:
 		angle += 2*PI
 	return angle
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta):
+	# print("turret.gd", self.global_rotation)
 	var deltapos:Vector2 = self.target - self.global_position
 	var should_rotate:float = deltapos.angle() - self.global_rotation  # 因该旋转的弧度
 	should_rotate = self.process_angle(should_rotate)
 	#print("应该旋转", should_rotate)
 	if abs(should_rotate) < self.tolerance:
 		self.aimed = true
+		#print("瞄准了")
 		return
+	#print("没有瞄准 ", should_rotate)
 	if should_rotate >0:
 		self.global_rotation += angularspeed * delta
 	else:

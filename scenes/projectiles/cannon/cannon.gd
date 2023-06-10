@@ -1,10 +1,10 @@
 extends Node2D
 class_name CannonShell
 
-@export var is_enemy: bool  # 每个东西都要这个属性判断敌我
+@export var is_enemy: bool = true  # 每个东西都要这个属性判断敌我
 @export var damage: float = 10000 # 威力，越近越大
 @export var hp: float = 100 # 生命值
-var speed: Vector2 = Vector2(100,110) # 速度
+var speed: Vector2 = Vector2(100,0) # 速度
 
 
 var tracing_objs: Array[Area2D] = []  # 进入追踪范围的对象
