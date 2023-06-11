@@ -6,7 +6,7 @@ class_name LaserBeam
 var start: Vector2 = Vector2(100,100)  # 光束起点，通常是炮口，相对父节点
 var global_start: Vector2 = Vector2(100,100) # 全局光束起点
 
-var length: float = 2000# 最大光束长度，贯穿型需要延申到屏幕外，普通的到第一个敌人那就停
+var length: float = 10000# 最大光束长度，贯穿型需要延申到屏幕外，普通的到第一个敌人那就停
 var duration: float = 1.0 # 光束存在时间
 var can_through: bool = false # 可以贯穿
 @export var color:String = "red"  # 颜色
@@ -19,7 +19,7 @@ var can_through: bool = false # 可以贯穿
 var on_the_way: Array # 挡路的
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print("laserbeam.gd  ",  self.global_rotation)
+	# print("laserbeam.gd  ",  self.global_rotation)
 	var param = PhysicsRayQueryParameters2D.create(self.global_start, 
 		self.global_start + self.length *Vector2.from_angle(self.global_rotation)
 	)
@@ -53,7 +53,7 @@ func _ready():
 			icon.texture = red_beam
 		elif self.color == "yellow":
 			icon.texture = yellow_beam
-		icon.position = self.start +  Vector2(i *64,0)
+		icon.position = self.start + Vector2(i * 64, 0)
 		#icon.global_position = self.global_start + i *64* Vector2.from_angle(self.global_rotation)
 		# icon.global_rotation = self.global_rotation
 		icon.rotation = 0

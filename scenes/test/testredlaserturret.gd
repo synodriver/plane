@@ -1,5 +1,8 @@
 extends Node2D
 
+func _ready():
+	self.get_node("RedLaserTurret").angularspeed = 2
+
 func _input(event):
 	if event is InputEventMouseButton:
 			if event.button_index == MouseButton.MOUSE_BUTTON_LEFT:

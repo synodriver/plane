@@ -12,7 +12,7 @@ func fire():
 		laserbeam.global_start = self.global_position + rorate_vector * self.barrel_length
 		# print("RedLaserTurret.gd",self.global_rotation )
 		#laserbeam.angle = self.global_rotation
-		laserbeam.duration =0.1
+		laserbeam.duration = 0.05
 		laserbeam.color = "red"
 		self.add_child(laserbeam)
 		
