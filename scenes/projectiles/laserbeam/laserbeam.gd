@@ -8,7 +8,7 @@ var angle: float = PI/4# 指向
 
 var length: float = 2000# 最大光束长度，贯穿型需要延申到屏幕外，普通的到第一个敌人那就停
 var duration: float = 1.0 # 光束存在时间
-var can_through: bool = false # 贯穿
+var can_through: bool = false # 可以贯穿
 @export var color:String = "red"  # 颜色
 
 # 一段128像素
@@ -59,6 +59,12 @@ func _ready():
 		pass # Replace with function body.
 	var timer = self.get_tree().create_timer(self.duration)	
 	timer.timeout.connect(self._on_timer_timeout)
+	if self.can_through:
+		for obj in self.on_the_way:
+			obj["collider"].get_parent().take_damage(self.damage)
+	else:
+		if self.on_the_way:
+			self.on_the_way[0]["collider"].get_parent().take_damage(self.damage)
 	# print("添加超时")
 
 func _on_timer_timeout():
