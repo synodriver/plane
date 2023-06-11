@@ -13,26 +13,33 @@ var ddistance: Array[Array] = []
 
 func _ready():
 	self.add_to_group("shell")  # 所有炮弹都在shell组
+	self.get_node("DetectArea").add_to_group("field")  # 力场
 	self.get_node("DetectArea").connect("area_entered", Callable(self, "detectarea_on_area_entered"))
 	self.get_node("DetectArea").connect("area_exited", Callable(self, "detectarea_on_area_exited"))
 	self.get_node("BodyArea").connect("area_entered", Callable(self, "bodyarea_on_area_entered"))
+	self.get_node("BodyArea").add_to_group("solid") # 实体
 	
 func detectarea_on_area_entered(area: Area2D):
-	if area.get_parent().is_enemy != self.is_enemy:
-		if area.get_parent().is_in_group("plane"):
-			self.tracing_objs.append(area)
-			self.ddistance.append([])
+	if area.is_in_group("solid"):
+		if area.get_parent().is_enemy != self.is_enemy:
+			if area.get_parent().is_in_group("plane"):
+				self.tracing_objs.append(area)
+				self.ddistance.append([])
 
 func detectarea_on_area_exited(area: Area2D):
-	var idx = self.tracing_objs.find(area)
-	self.tracing_objs.erase(area)
-	self.ddistance.remove_at(idx)
+	if area.is_in_group("solid"):
+		if area.get_parent().is_enemy != self.is_enemy:
+			if area.get_parent().is_in_group("plane"):
+				var idx = self.tracing_objs.find(area)
+				self.tracing_objs.erase(area)
+				self.ddistance.remove_at(idx)
 
 func bodyarea_on_area_entered(area: Area2D):
-	if area.get_parent().is_enemy != self.is_enemy:
-		var other = area.get_parent()
-		if other.is_in_group("plane") || other.is_in_group("shell"): # 撞上敌方飞机or炮弹
-			self.destroy()
+	if area.is_in_group("solid"):
+		if area.get_parent().is_enemy != self.is_enemy:
+			var other = area.get_parent()
+			if other.is_in_group("plane") || other.is_in_group("shell"): # 撞上敌方飞机or炮弹
+				self.destroy()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -41,7 +48,7 @@ func _physics_process(delta):
 	var idx: int = 0
 	var tmpdis: float
 	for obj in self.tracing_objs:
-		tmpdis = self.global_position.distance_to(obj.global_position)
+		tmpdis = self.global_position.distance_to(obj.get_parent().global_position)
 		self.ddistance[idx].append(tmpdis)
 		if len(self.ddistance[idx]) >=2:
 			if self.ddistance[idx][-1]>self.ddistance[idx][-2]:
@@ -54,8 +61,9 @@ func _physics_process(delta):
 func destroy(): # 炮弹爆炸
 	var detect_area: Area2D = self.get_node("DetectArea")
 	for obj in detect_area.get_overlapping_areas():
-		if obj.get_parent().is_enemy != self.is_enemy:
-			obj.get_parent().take_damage(self.damage/self.global_position.distance_to(obj.global_position))
+		if obj.is_in_group("solid"):
+			if obj.get_parent().is_enemy != self.is_enemy:
+				obj.get_parent().take_damage(self.damage/self.global_position.distance_to(obj.get_parent().global_position))
 	self.get_parent().remove_child(self)
 	self.queue_free()
 	

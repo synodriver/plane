@@ -16,12 +16,14 @@ func set_target(t: Vector2):
 func _ready():
 	self.add_to_group("shell")
 	self.get_node("BodyArea").connect("area_entered", Callable(self, "bodyarea_on_area_entered"))
-
+	self.get_node("BodyArea").add_to_group("solid")
+	
 func bodyarea_on_area_entered(area: Area2D):
-	if area.get_parent().is_enemy != self.is_enemy:
-		var other = area.get_parent()
-		if other.is_in_group("plane") || other.is_in_group("shell"): # 撞上敌方飞机or炮弹
-			self.destroy()
+	if area.is_in_group("solid"):
+		if area.get_parent().is_enemy != self.is_enemy:
+			var other = area.get_parent()
+			if other.is_in_group("plane") || other.is_in_group("shell"): # 撞上敌方飞机or炮弹
+				self.destroy()
 	
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -37,8 +39,9 @@ func _physics_process(delta):
 func destroy(): # 导弹爆炸
 	var detect_area: Area2D = self.get_node("BodyArea")
 	for obj in detect_area.get_overlapping_areas():
-		if obj.get_parent().is_enemy != self.is_enemy:
-			obj.get_parent().take_damage(self.damage)
+		if obj.is_in_group("solid"):
+			if obj.get_parent().is_enemy != self.is_enemy:
+				obj.get_parent().take_damage(self.damage)
 	self.get_parent().remove_child(self)
 	self.queue_free()
 	
