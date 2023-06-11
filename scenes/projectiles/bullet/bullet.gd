@@ -29,6 +29,7 @@ func destroy(): # 子弹撞上了什么
 		if obj.get_parent().is_enemy != self.is_enemy:
 			obj.get_parent().take_damage(self.damage)
 	self.get_parent().remove_child(self)
+	self.queue_free()
 	
 func take_damage(hp_: float):
 	self.hp -= hp_

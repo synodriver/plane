@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c0kw40cqabmn8"
-path="res://.godot/imported/red_bean.tga-e2e97d6580c5c784576753385478690a.ctex"
+path="res://.godot/imported/pink_beam.tga-48bcc7fb6ae805454e37a603be1c59fa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/laser/red_bean.tga"
-dest_files=["res://.godot/imported/red_bean.tga-e2e97d6580c5c784576753385478690a.ctex"]
+source_file="res://images/laser/pink_beam.tga"
+dest_files=["res://.godot/imported/pink_beam.tga-48bcc7fb6ae805454e37a603be1c59fa.ctex"]
 
 [params]
 

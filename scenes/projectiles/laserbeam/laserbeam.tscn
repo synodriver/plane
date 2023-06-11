@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cc2el2kxywb18"]
+
+[ext_resource type="Script" path="res://scenes/projectiles/laserbeam/laserbeam.gd" id="1_rm1n3"]
+
+[node name="LaserBeam" type="Node2D"]
+script = ExtResource("1_rm1n3")

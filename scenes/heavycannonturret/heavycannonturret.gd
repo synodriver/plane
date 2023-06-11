@@ -1,7 +1,7 @@
 extends BaseTurret
 class_name HeavyCannonTurret
 
-var barrel_length = 350
+var barrel_length = 350 # 炮管长度，炮弹在炮口生成
 @onready var cannon_shell_t = preload("res://scenes/projectiles/cannon/cannon.tscn")
 # Called when the node enters the scene tree for the first time.
 func fire():

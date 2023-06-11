@@ -15,3 +15,4 @@ func _ready():
 
 func _on_timer_timeout():
 	self.get_parent().remove_child(self)
+	self.queue_free()
