@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bo664ksymr2bj"]
+
+[ext_resource type="Script" path="res://scenes/redlaser_turret/redlaser_turret.gd" id="1_7ltid"]
+[ext_resource type="Texture2D" uid="uid://c1ndol1oh6oq" path="res://images/laser/redlaser_barrel.tga" id="1_a36fu"]
+
+[node name="RedLaserTurret" type="Node2D"]
+script = ExtResource("1_7ltid")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(80, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_a36fu")

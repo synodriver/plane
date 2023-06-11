@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://f5lx6npw3abv"]
+
+[ext_resource type="Script" path="res://scenes/heavycannon_turret/heavycannon_turret.gd" id="1_o2yg6"]
+[ext_resource type="Texture2D" uid="uid://bmfq85ejj0wgt" path="res://images/cannon/heavyconnon_barrel.png" id="2_eofkt"]
+
+[node name="HeavyCannonTurret" type="Node2D"]
+script = ExtResource("1_o2yg6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(164, 4)
+scale = Vector2(0.512, 0.5)
+texture = ExtResource("2_eofkt")

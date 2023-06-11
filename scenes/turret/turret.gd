@@ -1,4 +1,4 @@
-extends Area2D
+extends Node2D
 class_name BaseTurret
 
 @export var angularspeed: float = 0.5 # 炮塔旋转角速度 rad/s

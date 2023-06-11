@@ -3,8 +3,8 @@ class_name LaserBeam
 
 @export var is_enemy: bool = true  # 每个东西都要这个属性判断敌我
 @export var damage: float = 1000 # 威力，越近越大
-var start: Vector2 = Vector2(100,100)  # 光束起点，通常是炮口
-var angle: float = PI/4# 指向
+var start: Vector2 = Vector2(100,100)  # 光束起点，通常是炮口，相对父节点
+var global_start: Vector2 = Vector2(100,100) # 全局光束起点
 
 var length: float = 2000# 最大光束长度，贯穿型需要延申到屏幕外，普通的到第一个敌人那就停
 var duration: float = 1.0 # 光束存在时间
@@ -19,8 +19,9 @@ var can_through: bool = false # 可以贯穿
 var on_the_way: Array # 挡路的
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var param = PhysicsRayQueryParameters2D.create(self.start, 
-		self.start + self.length *Vector2.from_angle(self.angle)
+	print("laserbeam.gd  ",  self.global_rotation)
+	var param = PhysicsRayQueryParameters2D.create(self.global_start, 
+		self.global_start + self.length *Vector2.from_angle(self.global_rotation)
 	)
 	param.collide_with_areas = true
 	while true:
@@ -39,8 +40,8 @@ func _ready():
 	# print(red_beam)
 	if not self.can_through: # 不能穿透，打中第一个
 		if self.on_the_way:
-			self.length = self.start.distance_to(self.on_the_way[0]["position"])
-	var beam_count: int = self.length / 128
+			self.length = self.global_start.distance_to(self.on_the_way[0]["position"])
+	var beam_count: int = self.length / 64
 
 		#
 	# print(beam_count)
@@ -52,11 +53,13 @@ func _ready():
 			icon.texture = red_beam
 		elif self.color == "yellow":
 			icon.texture = yellow_beam
-		icon.global_position = self.start + i *128* Vector2.from_angle(self.angle)
-		icon.global_rotation = self.angle
+		icon.position = self.start +  Vector2(i *64,0)
+		#icon.global_position = self.global_start + i *64* Vector2.from_angle(self.global_rotation)
+		# icon.global_rotation = self.global_rotation
+		icon.rotation = 0
+		icon.scale = Vector2(0.5, 0.5)
 		self.add_child(icon)
 		# print("添加光束段",icon, icon.texture)
-		pass # Replace with function body.
 	var timer = self.get_tree().create_timer(self.duration)	
 	timer.timeout.connect(self._on_timer_timeout)
 	if self.can_through:
