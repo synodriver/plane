@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dpymdxk358p84"]
 
-[ext_resource type="Script" path="res://scenes/test/testheavycannonturret.gd" id="1_6xv31"]
+[ext_resource type="Script" path="res://scenes/test/test_heavycannonturret.gd" id="1_6xv31"]
 [ext_resource type="PackedScene" uid="uid://f5lx6npw3abv" path="res://scenes/heavycannon_turret/heavycannon_turret.tscn" id="2_qnbne"]
 
 [node name="Node2D" type="Node2D"]

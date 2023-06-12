@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b0d03ktdgdm4e"]
 
-[ext_resource type="Script" path="res://scenes/test/testturret.gd" id="1_a747f"]
+[ext_resource type="Script" path="res://scenes/test/test_turret.gd" id="1_a747f"]
 [ext_resource type="PackedScene" uid="uid://dhmpevqrappsl" path="res://scenes/turret/turret.tscn" id="2_0wt4f"]
 
 [node name="Node2D" type="Node2D"]
