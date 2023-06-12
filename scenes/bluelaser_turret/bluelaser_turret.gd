@@ -1,7 +1,7 @@
 extends BaseTurret
-class_name RedLaserTurret
+class_name BlueLaserTurret
 
-var barrel_length = 50 # 炮管长度，炮弹在炮口生成
+var barrel_length = 110 # 炮管长度，炮弹在炮口生成
 @onready var shell_t = preload("res://scenes/projectiles/laserbeam/laserbeam.tscn")
 
 func fire():
@@ -13,8 +13,7 @@ func fire():
 		# print("RedLaserTurret.gd",self.global_rotation )
 		#laserbeam.angle = self.global_rotation
 		laserbeam.duration = 2
-		laserbeam.color = "red"
-		laserbeam.beam_width = 50
+		laserbeam.color = "blue"
 		self.add_child(laserbeam)
 		
 func _ready():

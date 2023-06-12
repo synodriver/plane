@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3y6y7faqmdu6"
-path="res://.godot/imported/bluelaser_barrel.tga-9c35c1535a2a8e96013461f897b25b0d.ctex"
+uid="uid://cdtj0sah0wx3b"
+path="res://.godot/imported/200mmcannon_head.png-59f82b3e0327f20a4f5f8ffc2039a9c0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/laser/bluelaser_barrel.tga"
-dest_files=["res://.godot/imported/bluelaser_barrel.tga-9c35c1535a2a8e96013461f897b25b0d.ctex"]
+source_file="res://images/cannon/200mmcannon_head.png"
+dest_files=["res://.godot/imported/200mmcannon_head.png-59f82b3e0327f20a4f5f8ffc2039a9c0.ctex"]
 
 [params]
 

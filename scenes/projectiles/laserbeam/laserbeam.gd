@@ -78,8 +78,6 @@ func create_laserbeam():
 			self.laser.add_point(self.start + Vector2(self.length, 0))
 		else:
 			self.laser.add_point(self.laser.to_local(self.on_the_way[0]["position"]))
-	print(self.laser.get_points())
-	self.laser.show()
 	
 func calc_damage(delta):
 	if self.can_through: # 贯穿激光
