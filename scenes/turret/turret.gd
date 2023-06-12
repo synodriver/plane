@@ -36,7 +36,7 @@ func _physics_process(delta):
 		return
 	#print("没有瞄准 ", should_rotate)
 	# var xishu: float = 1.0
-	while angularspeed * delta > should_rotate: # 步子太大扯淡了
+	while angularspeed * delta > abs(should_rotate): # 步子太大扯淡了
 		self.global_rotation += should_rotate
 		return
 	# print("xishu ", xishu)

@@ -1,7 +1,7 @@
 extends Node2D
 
 func _ready():
-	self.get_node("BlueLaserTurret").angularspeed = 2
+	# self.get_node("BlueLaserTurret").angularspeed = 2
 	self.get_node("BlueLaserTurret").position = Vector2(150,150)
 
 func _input(event):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://bpd6tf1lqbv2i"]
+[gd_scene load_steps=3 format=3 uid="uid://c5ohbtvlnnr7j"]
 
 [ext_resource type="Script" path="res://scenes/toy/minigun.gd" id="1_bsivy"]
 [ext_resource type="Texture2D" uid="uid://dv17p0cm7ysvo" path="res://images/turret/minigun.png" id="2_8ix0c"]

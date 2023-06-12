@@ -7,6 +7,7 @@
 position = Vector2(387, 222)
 rotation = -1.77675
 script = ExtResource("1_vwfni")
+angularspeed = 5.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.400391, 0.410156)

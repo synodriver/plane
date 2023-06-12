@@ -6,6 +6,7 @@
 
 [node name="BlueLaserTurret" type="Node2D"]
 script = ExtResource("1_tmky3")
+angularspeed = 1.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 1
