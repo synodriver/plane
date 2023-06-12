@@ -3,72 +3,38 @@ class_name LaserBeam
 
 @export var is_enemy: bool = true  # 每个东西都要这个属性判断敌我
 @export var damage: float = 1000 # 威力，越近越大
-var start: Vector2 = Vector2(100,100)  # 光束起点，通常是炮口，相对父节点
-var global_start: Vector2 = Vector2(100,100) # 全局光束起点
+var start: Vector2 = Vector2(100, 0)  # 光束起点，通常是炮口，相对父节点, y一定是0
+# var global_start: Vector2 = Vector2(100,100) # 全局光束起点
 
 var length: float = 10000# 最大光束长度，贯穿型需要延申到屏幕外，普通的到第一个敌人那就停
-var duration: float = 1.0 # 光束存在时间
+var duration: float = 2.0 # 光束存在时间
 var can_through: bool = false # 可以贯穿
 @export var color:String = "red"  # 颜色
-
+@export var beam_width: float = 40.0  # 光束宽度
 # 一段128像素
 @onready var blue_beam = preload("res://images/laser/blue_beam.png")
 @onready var yellow_beam = preload("res://images/laser/yellow_beam.png")
 @onready var red_beam = preload("res://images/laser/red_beam.dds")
 
 var on_the_way: Array # 挡路的
+@onready var raycast: RayCast2D = self.get_node("RayCast2D")
+@onready var laser: Line2D = self.get_node("Line2D")
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	# print("laserbeam.gd  ",  self.global_rotation)
-	var param = PhysicsRayQueryParameters2D.create(self.global_start, 
-		self.global_start + self.length *Vector2.from_angle(self.global_rotation)
-	)
-	param.collide_with_areas = true
-	while true:
-		var result = self.get_world_2d().direct_space_state.intersect_ray(param)
-		if len(result)==0:
-			break
-		if result["collider"].is_in_group("solid"): # 创到了实体
-			if result["collider"].get_parent().is_enemy != self.is_enemy: # 创到了敌方的什么
-				self.on_the_way.append(result)
-				param.exclude.append(result["rid"])
-			else: # 创到了自己
-				param.exclude.append(result["rid"])
-		else: # 创到了力场
-			param.exclude.append(result["rid"])
-			
-	# print(red_beam)
-	if not self.can_through: # 不能穿透，打中第一个
-		if self.on_the_way:
-			self.length = self.global_start.distance_to(self.on_the_way[0]["position"])
-	var beam_count: int = self.length / 64
-
-		#
-	# print(beam_count)
-	for i in range(beam_count):
-		var icon: Sprite2D = Sprite2D.new()
-		if self.color == "blue":
-			icon.texture = blue_beam
-		elif self.color == "red":
-			icon.texture = red_beam
-		elif self.color == "yellow":
-			icon.texture = yellow_beam
-		icon.position = self.start + Vector2(i * 64, 0)
-		#icon.global_position = self.global_start + i *64* Vector2.from_angle(self.global_rotation)
-		# icon.global_rotation = self.global_rotation
-		icon.rotation = 0
-		icon.scale = Vector2(0.5, 0.5)
-		self.add_child(icon)
-		# print("添加光束段",icon, icon.texture)
+	self.raycast.position = Vector2(0, 0)
+	self.raycast.target_position = Vector2(self.length, 0)
+	self.raycast.collide_with_areas = true
+	if self.color == "blue":
+		self.laser.texture = blue_beam
+	elif self.color == "red":
+		self.laser.texture = red_beam
+	elif self.color == "yellow":
+		self.laser.texture = yellow_beam
+	self.laser.width = self.beam_width
+	self.laser.texture_mode = 1
+	
 	var timer = self.get_tree().create_timer(self.duration)	
 	timer.timeout.connect(self._on_timer_timeout)
-	if self.can_through:
-		for obj in self.on_the_way:
-			obj["collider"].get_parent().take_damage(self.damage)
-	else:
-		if self.on_the_way:
-			self.on_the_way[0]["collider"].get_parent().take_damage(self.damage)
-	# print("添加超时")
 
 func _on_timer_timeout():
 	# print("消失")
@@ -76,5 +42,49 @@ func _on_timer_timeout():
 	self.queue_free()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _physics_process(delta):
+	# self.raycast.force_raycast_update()
+	self.update_collision()
+	self.create_laserbeam()
+	self.calc_damage(delta)
+
+func update_collision():
+	self.on_the_way.clear()
+	self.raycast.clear_exceptions()
+	while true:
+		if self.raycast.is_colliding():
+			var collider = self.raycast.get_collider()
+			if collider.is_in_group("solid"): # 创到了实体
+				if collider.get_parent().is_enemy != self.is_enemy: # 创到了敌方的什么
+					self.on_the_way.append({"collider": collider, 
+											"rid": self.raycast.get_collider_rid(), 
+											"position": self.raycast.get_collision_point()})
+					self.raycast.add_exception_rid(self.raycast.get_collider_rid())
+				else: # 创到了自己
+					self.raycast.add_exception_rid(self.raycast.get_collider_rid())
+			else:  # 创到了力场
+				self.raycast.add_exception_rid(self.raycast.get_collider_rid())
+		else:
+			break
+
+func create_laserbeam():
+	# print(self.laser.texture)
+	self.laser.clear_points()
+	self.laser.add_point(self.start)
+	if self.can_through: # 贯穿激光
+		self.laser.add_point(self.start + Vector2(self.length, 0))
+	else: # 一般激光
+		if len(self.on_the_way) == 0:
+			self.laser.add_point(self.start + Vector2(self.length, 0))
+		else:
+			self.laser.add_point(self.laser.to_local(self.on_the_way[0]["position"]))
+	print(self.laser.get_points())
+	self.laser.show()
+	
+func calc_damage(delta):
+	if self.can_through: # 贯穿激光
+		for obj in self.on_the_way:
+			obj["collider"].get_parent().take_damage(self.damage/self.duration * delta)
+	else:
+		if self.on_the_way:
+			self.on_the_way[0]["collider"].get_parent().take_damage(self.damage/self.duration * delta)
