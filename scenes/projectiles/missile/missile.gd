@@ -1,7 +1,7 @@
 extends Node2D
 class_name Missile
 
-@export var is_enemy: bool  # 每个东西都要这个属性判断敌我
+@export var is_enemy: bool = true # 每个东西都要这个属性判断敌我
 @export var damage: float = 1000 # 威力，越近越大 
 @export var hp: float = 50 # 生命值
 var speed: Vector2 = Vector2(200,0) # 速度
@@ -41,9 +41,9 @@ func _physics_process(delta):
 #	# print("位置",self.global_position, "速度", self.speed)
 	self.global_position += self.speed * delta
 	self.look_at(self.global_position + self.speed)  # 指向速度方向
-	# todo  加速度方向只能和速度方向垂直
+#	todo  加速度方向只能和速度方向垂直
 	var pos: Vector2 = self.global_position.direction_to(self.target) 
-	print(self.speed.angle_to(pos))
+#	print(self.speed.angle_to(pos))
 	if self.speed.angle_to(pos) > 0:
 		self.speed -= self.speed.orthogonal() * 0.01
 	else:

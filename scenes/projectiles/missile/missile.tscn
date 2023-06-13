@@ -5,15 +5,15 @@
 
 [node name="Missile" type="Node2D"]
 script = ExtResource("1_ni4uw")
-is_enemy = true
 
 [node name="BodyArea" type="Area2D" parent="."]
 position = Vector2(-112, 0)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BodyArea"]
-polygon = PackedVector2Array(-45, 31, -45, -30, 170, -30, 238, -13, 244, -11, 249, -6, 251, 0, 249, 5, 244, 10, 237, 12, 170, 31)
+polygon = PackedVector2Array(29, -16, 137, -15, 169, -7, 172, -6, 175, -5, 177, -2, 177, 0, 177, 2, 175, 4, 172, 5, 169, 6, 137, 15, 29, 15)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-112, 0)
+position = Vector2(-60, 0)
 rotation = 1.5708
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_cx810")
