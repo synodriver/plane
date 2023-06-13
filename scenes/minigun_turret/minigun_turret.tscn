@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cfpsdyrbstflq"]
+
+[ext_resource type="Texture2D" uid="uid://bpxk45ycumd05" path="res://images/minigun/minigun_head.png" id="1_1qabi"]
+[ext_resource type="Script" path="res://scenes/minigun_turret/minigun_turret.gd" id="1_t4vd1"]
+[ext_resource type="Texture2D" uid="uid://oeun83x2vbe4" path="res://images/minigun/minigun_barrel.png" id="3_t6yki"]
+
+[node name="MinigunTurret" type="Node2D"]
+script = ExtResource("1_t4vd1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(50, -30)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_1qabi")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(50, -27)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_t6yki")

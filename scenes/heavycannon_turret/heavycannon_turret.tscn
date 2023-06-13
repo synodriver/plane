@@ -10,13 +10,13 @@ script = ExtResource("1_o2yg6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 1
-position = Vector2(164, 0)
+position = Vector2(164, 3)
 scale = Vector2(0.512, 0.5)
 texture = ExtResource("2_eofkt")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 z_index = 1
-position = Vector2(-110, 0)
+position = Vector2(-110, 3)
 texture = ExtResource("3_0axdq")
 
 [node name="Sprite2D3" type="Sprite2D" parent="."]
