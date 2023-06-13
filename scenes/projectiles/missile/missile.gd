@@ -9,6 +9,12 @@ var speed: Vector2 = Vector2(100,0) # 速度
 
 var target: Vector2 = Vector2(500,500) # 目标的绝对坐标
 
+
+@export var min_jitter = 0
+@export var max_jitter = 3
+var switch = false
+var real_global_postion
+
 func set_target(t: Vector2):
 	self.target = t
 
@@ -19,6 +25,8 @@ func _ready():
 	self.get_node("BodyArea").add_to_group("solid")
 	self.look_at(self.global_position + self.speed)  # 指向速度方向
 	
+	self.real_global_postion = self.global_position
+	
 func bodyarea_on_area_entered(area: Area2D):
 	if area.is_in_group("solid"):
 		if area.get_parent().is_enemy != self.is_enemy:
@@ -26,16 +34,25 @@ func bodyarea_on_area_entered(area: Area2D):
 			if other.is_in_group("plane") || other.is_in_group("shell"): # 撞上敌方飞机or炮弹
 				self.destroy()
 	
-	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
 func _physics_process(delta):
-	# print("位置",self.global_position, "速度", self.speed)
+	self.global_position = self.real_global_postion
+	
+#	# print("位置",self.global_position, "速度", self.speed)
 	self.global_position += self.speed * delta
 	self.look_at(self.global_position + self.speed)  # 指向速度方向
 	var pos:Vector2 = self.global_position.direction_to(self.target)
 
 	self.speed += pos * 500 * delta
 	
+	self.real_global_postion = self.global_position
+	if switch:
+		self.position += Vector2(0, randf_range(self.min_jitter, self.max_jitter))
+		switch = false
+	else:
+		self.position -= Vector2(0, randf_range(self.min_jitter, self.max_jitter))
+		switch = true
+
 	
 func destroy(): # 导弹爆炸
 	var detect_area: Area2D = self.get_node("BodyArea")
