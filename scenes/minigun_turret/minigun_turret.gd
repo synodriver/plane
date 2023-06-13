@@ -14,7 +14,6 @@ func fire():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	self.fire()
 	pass # Replace with function body.
 
 

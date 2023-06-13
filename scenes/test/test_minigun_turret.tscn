@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjtpdo2l3hr3l"]
+
+[ext_resource type="Script" path="res://scenes/test/test_minigun_turret.gd" id="1_xdcqr"]
+[ext_resource type="PackedScene" uid="uid://cfpsdyrbstflq" path="res://scenes/minigun_turret/minigun_turret.tscn" id="2_m6btc"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_xdcqr")
+
+[node name="MinigunTurret" parent="." instance=ExtResource("2_m6btc")]
