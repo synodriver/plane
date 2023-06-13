@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://ddydabep1hfwt"]
 
-[ext_resource type="Script" path="res://scenes/test/test_redlaserturret.gd" id="1_44eyr"]
+[ext_resource type="Script" path="res://scenes/test/test_redlaser_turret.gd" id="1_unvlw"]
 [ext_resource type="PackedScene" uid="uid://bo664ksymr2bj" path="res://scenes/redlaser_turret/redlaser_turret.tscn" id="2_1u0qa"]
 
 [node name="Node2D" type="Node2D"]
-script = ExtResource("1_44eyr")
+script = ExtResource("1_unvlw")
 
 [node name="RedLaserTurret" parent="." instance=ExtResource("2_1u0qa")]

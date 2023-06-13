@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://er2pmiev15ll"]
-
-[ext_resource type="Script" path="res://scenes/test/test_bluelaserturret.gd" id="1_5g7oq"]
-[ext_resource type="PackedScene" uid="uid://ctw4t72cv2ebe" path="res://scenes/bluelaser_turret/bluelaser_turret.tscn" id="2_4vo7x"]
-
-[node name="Node2D" type="Node2D"]
-script = ExtResource("1_5g7oq")
-
-[node name="BlueLaserTurret" parent="." instance=ExtResource("2_4vo7x")]

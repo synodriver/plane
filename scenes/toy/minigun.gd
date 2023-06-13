@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var rotate_speed: float = deg_to_rad(90)
+@export var rotate_speed: float = deg_to_rad(300)
 @export var accuracy: float = 0.8
 @export var fire_rate: float = 500
 
@@ -35,6 +35,7 @@ func _ready():
 	self.timer.timeout.connect(_on_timer_timeout)
 
 func _physics_process(delta):
+	# print(self.global_rotation)
 	self.target_pos = get_global_mouse_position()
 	
 	if self.is_aiming:

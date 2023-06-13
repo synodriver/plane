@@ -18,6 +18,7 @@ func _ready():
 	self.get_node("DetectArea").connect("area_exited", Callable(self, "detectarea_on_area_exited"))
 	self.get_node("BodyArea").connect("area_entered", Callable(self, "bodyarea_on_area_entered"))
 	self.get_node("BodyArea").add_to_group("solid") # 实体
+	self.look_at(self.global_position + self.speed)  # 指向速度方向
 	
 func detectarea_on_area_entered(area: Area2D):
 	if area.is_in_group("solid"):

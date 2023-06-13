@@ -1,8 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://drm16p0moln0l"]
+[gd_scene load_steps=4 format=3 uid="uid://drm16p0moln0l"]
 
 [ext_resource type="Script" path="res://scenes/projectiles/bullet/bullet.gd" id="1_2jjr6"]
+[ext_resource type="Texture2D" uid="uid://wbm68a0cjh1p" path="res://images/bullet/yellow_bullet.tga" id="2_aly41"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8y4am"]
+size = Vector2(7.1875, 3.375)
 
 [node name="Bullet" type="Node2D"]
 script = ExtResource("1_2jjr6")
@@ -13,3 +15,5 @@ script = ExtResource("1_2jjr6")
 shape = SubResource("RectangleShape2D_8y4am")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.05)
+texture = ExtResource("2_aly41")

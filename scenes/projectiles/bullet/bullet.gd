@@ -11,6 +11,7 @@ func _ready():
 	self.add_to_group("bullet")
 	self.get_node("BodyArea").add_to_group("solid")
 	self.get_node("BodyArea").connect("area_entered", Callable(self, "bodyarea_on_area_entered"))
+	self.look_at(self.global_position + self.speed)  # 指向速度方向
 
 func bodyarea_on_area_entered(area: Area2D):
 	if area.is_in_group("solid"):
