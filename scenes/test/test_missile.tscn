@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bwicxa6ublegu" path="res://scenes/projectiles/missile/missile.tscn" id="2_ngdh1"]
 
 [node name="Node2D" type="Node2D"]
+position = Vector2(496, 225)
 script = ExtResource("1_os1rw")
 
 [node name="Missile" parent="." instance=ExtResource("2_ngdh1")]
