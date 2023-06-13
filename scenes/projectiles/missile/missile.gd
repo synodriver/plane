@@ -10,10 +10,10 @@ var speed: Vector2 = Vector2(100,0) # 速度
 var target: Vector2 = Vector2(500,500) # 目标的绝对坐标
 
 
-@export var min_jitter = 0
-@export var max_jitter = 3
-var switch = false
-var real_global_postion
+@export var min_jitter = 0  # 抖动
+@export var max_jitter = 10
+var switch: bool = false
+var real_global_postion: Vector2  # 出生点
 
 func set_target(t: Vector2):
 	self.target = t
