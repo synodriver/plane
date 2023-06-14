@@ -5,6 +5,7 @@ class_name Bullet
 @export var damage: float = 10000 # 威力，越近越大
 @export var hp: float = 100 # 生命值
 var speed: Vector2 = Vector2(100,110) # 速度
+var duration: float = 20.0 # 存在时间
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,6 +13,8 @@ func _ready():
 	self.get_node("BodyArea").add_to_group("solid")
 	self.get_node("BodyArea").connect("area_entered", Callable(self, "bodyarea_on_area_entered"))
 	self.look_at(self.global_position + self.speed)  # 指向速度方向
+	var timer = self.get_tree().create_timer(self.duration)	
+	timer.timeout.connect(self.destroy)
 
 func bodyarea_on_area_entered(area: Area2D):
 	if area.is_in_group("solid"):

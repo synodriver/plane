@@ -12,7 +12,7 @@ func fire():
 		var shell: Missile = self.cannon_shell_t.instantiate()
 		var rorate_vector = Vector2.from_angle(self.global_rotation)
 		shell.global_position = self.global_position + rorate_vector * self.barrel_length 
-		shell.speed = 300 * rorate_vector
+		shell.speed = 500 * rorate_vector
 		self.get_node("/root").add_child(shell)
 		self.missiles.append(shell)
 		

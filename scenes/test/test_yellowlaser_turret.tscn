@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsyrejl20qmlj"]
+
+[ext_resource type="Script" path="res://scenes/test/test_yellowlaser_turret.gd" id="1_orfj7"]
+[ext_resource type="PackedScene" uid="uid://dbjpvdufln5oi" path="res://scenes/yellowlaser_turret/yellow_laser_turret.tscn" id="2_gy76f"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_orfj7")
+
+[node name="YellowLaserTurret" parent="." instance=ExtResource("2_gy76f")]

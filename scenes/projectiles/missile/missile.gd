@@ -5,7 +5,7 @@ class_name Missile
 @export var damage: float = 1000 # 威力，越近越大 
 @export var hp: float = 50 # 生命值
 var speed: Vector2 = Vector2(200,0) # 速度
-
+@export var duration: float = 20
 
 var target: Vector2 = Vector2(500,500) # 目标的绝对坐标
 
@@ -24,6 +24,8 @@ func _ready():
 	self.get_node("BodyArea").connect("area_entered", Callable(self, "bodyarea_on_area_entered"))
 	self.get_node("BodyArea").add_to_group("solid")
 	self.look_at(self.global_position + self.speed)  # 指向速度方向
+	var timer = self.get_tree().create_timer(self.duration)	
+	timer.timeout.connect(self.destroy)
 	
 	# self.real_global_postion = self.global_position
 	
@@ -45,9 +47,9 @@ func _physics_process(delta):
 	var pos: Vector2 = self.global_position.direction_to(self.target) 
 #	print(self.speed.angle_to(pos))
 	if self.speed.angle_to(pos) > 0:
-		self.speed -= self.speed.orthogonal() * 0.01
+		self.speed -= self.speed.orthogonal() * 0.02
 	else:
-		self.speed += self.speed.orthogonal() * 0.01
+		self.speed += self.speed.orthogonal() * 0.02
 	
 	# self.speed += pos * 500 * delta
 	

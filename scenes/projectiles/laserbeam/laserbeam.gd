@@ -6,11 +6,11 @@ class_name LaserBeam
 var start: Vector2 = Vector2(100, 0)  # 光束起点，通常是炮口，相对父节点, y一定是0
 # var global_start: Vector2 = Vector2(100,100) # 全局光束起点
 
-var length: float = 10000# 最大光束长度，贯穿型需要延申到屏幕外，普通的到第一个敌人那就停
-var duration: float = 2.0 # 光束存在时间
-var can_through: bool = false # 可以贯穿
+@export var length: float = 10000# 最大光束长度，贯穿型需要延申到屏幕外，普通的到第一个敌人那就停
+@export var duration: float = 2.0 # 光束存在时间
+@export var can_through: bool = false # 可以贯穿
 @export var color:String = "red"  # 颜色
-@export var beam_width: float = 40.0  # 光束宽度
+@export var beam_width: float = 50.0  # 光束宽度
 # 一段128像素
 @onready var blue_beam = preload("res://images/laser/blue_beam.png")
 @onready var yellow_beam = preload("res://images/laser/yellow_beam.png")
